@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teleprompter</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-size: 2em;
+      padding: 50px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    #controles {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      font-size: 18px;
+      background: #00b894;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #019875;
+    }
+
+    .espelhado {
+      transform: scaleX(-1);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="texto"></div>
+  </div>
+
+  <div id="controles">
+    <button id="play">▶ Play</button>
+    <button id="pause">⏸ Pause</button>
+    <button id="maisVelocidade">➕ Mais rápido</button>
+    <button id="menosVelocidade">➖ Mais lento</button>
+    <button id="espelhar">🪞 Espelhar</button>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/teleprompter.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Carrega o roteiro salvo
+    const texto = localStorage.getItem("roteiro");
+    if (texto) {
+      document.getElementById("texto").innerHTML = texto
+        .split("\n")
+        .map(p => `<p>${p}</p>`)
+        .join("");
+    } else {
+      document.getElementById("texto").innerHTML = "<p>Nenhum texto encontrado.</p>";
+    }
+  </script>
+</body>
+</html>

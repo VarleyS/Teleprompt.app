@@ -1,4 +1,4 @@
-let velocidade = 1; // pixels por frame
+let velocidade = 0.3; // pixels por frame (mais suave)
 let rodando = false;
 let frame;
 
@@ -13,31 +13,27 @@ function iniciar() {
   if (!rodando) {
     rodando = true;
     rolarTexto();
-    log("Rolagem iniciada");
   }
 }
 
 function pausar() {
   rodando = false;
   cancelAnimationFrame(frame);
-  log("Rolagem pausada");
 }
 
 function aumentarVelocidade() {
   velocidade += 0.1;
-  log("Velocidade: " + velocidade);
+  log("Velocidade aumentada: " + velocidade.toFixed(2));
 }
 
 function diminuirVelocidade() {
   if (velocidade > 0.1) {
-    velocidade -= 0.2;
-    log("Velocidade: " + velocidade);
+    velocidade -= 0.1;
+    log("Velocidade reduzida: " + velocidade.toFixed(2));
   }
 }
 
 function alternarEspelhamento() {
   const app = document.getElementById("app");
   app.classList.toggle("espelhado");
-  log("Espelhamento ativado: " + app.classList.contains("espelhado"));
 }
-

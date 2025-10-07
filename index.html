@@ -2,36 +2,71 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Teleprompter</title>
+  <title>Teleprompter - Roteiro</title>
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+  
+    textarea {
+      width: 80%;
+      height: 300px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 18px;
+      resize: none;
+    }
+  
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #00b894;
+      color: white;
+      transition: background 0.3s;
+    }
+  
+    button:hover {
+      background: #019875;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <div id="texto">
-      <p>Bem-vindo ao seu teleprompter!</p>
-      <p>“O que aconteceria se a Lua desaparecesse?”</p>
-      <p>“Você já parou pra pensar… o que aconteceria se a Lua simplesmente sumisse do céu?”</p>
-      <p>“Sem lua cheia, sem lobisomens, e claro… sem aquelas desculpas de ‘foi culpa da lua’ quando algo dá errado.”</p>
-      <p>“Mas falando sério… a Lua não é só um enfeite. Ela funciona como uma espécie de ‘âncora’ que mantém o planeta estável.”</p>
-      <p>“Sem a Lua, o eixo da Terra ficaria descontrolado. Isso poderia transformar desertos em oceanos e congelar regiões tropicais. Além disso… as marés praticamente desapareceriam, afetando toda a vida marinha.”</p>
-      <p>“Em resumo: sem a Lua, nosso planeta se tornaria um lugar caótico e talvez… até inabitável.”</p>
-      <p>“Agora me diz… você acha que a humanidade sobreviveria sem a Lua? 🌍 Deixa sua resposta aqui nos comentários!”</p>
-      <p>Você pode controlar a velocidade, iniciar e pausar a rolagem.</p>
-    </div>
-  </div>
+  <h1>📝 Teleprompter</h1>
+  <p>Digite ou cole o seu roteiro abaixo:</p>
+  
+  <textarea id="roteiro" placeholder="Cole aqui o texto do seu roteiro..."></textarea>
+  
+  <button id="executar">Executar Teleprompter ▶</button>
+  
+  <script>
+    document.getElementById("executar").addEventListener("click", () => {
+      const texto = document.getElementById("roteiro").value.trim();
+      if (texto === "") {
+        alert("Por favor, insira um roteiro antes de executar.");
+        return;
+      }
 
-  <div id="controles">
-  <button id="play">▶ Play</button>
-  <button id="pause">⏸ Pause</button>
-  <button id="maisVelocidade">➕ Mais rápido</button>
-  <button id="menosVelocidade">➖ Mais lento</button>
-  <button id="espelhar">🪞 Espelhar</button>
-</div>
+      // Armazena o texto no localStorage
+      localStorage.setItem("roteiro", texto);
 
-  <script src="js/utils.js"></script>
-  <script src="js/teleprompter.js"></script>
-  <script src="js/main.js"></script>
+      // Redireciona para o teleprompter
+      window.location.href = "teleprompt.html";
+    });
+      </script>
 </body>
 </html>
