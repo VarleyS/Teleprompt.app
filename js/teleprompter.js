@@ -1,4 +1,4 @@
-let velocidade = 0.3; // pixels por frame (mais suave)
+let velocidade = 0.05; // pixels por frame (mais suave)
 let rodando = false;
 let frame;
 
@@ -22,14 +22,14 @@ function pausar() {
 }
 
 function aumentarVelocidade() {
-  velocidade += 0.1;
-  log("Velocidade aumentada: " + velocidade.toFixed(2));
+  velocidade += 0.2;
+  log("Velocidade aumentada: " + velocidade.toFixed(3));
 }
 
 function diminuirVelocidade() {
   if (velocidade > 0.1) {
-    velocidade -= 0.1;
-    log("Velocidade reduzida: " + velocidade.toFixed(2));
+    velocidade -= 0.2;
+    log("Velocidade reduzida: " + velocidade.toFixed(3));
   }
 }
 
